@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <AutoCompleteTextView
+        android:id="@+id/zipField"
+        android:layout_width="109dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
+        android:completionThreshold="1"
+        android:dropDownHeight="wrap_content"
+        android:enabled="false"
+        android:hint="zipcode"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/zipcode_radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/current_loc_label" />
+
+    <CheckBox
+        android:id="@+id/local_pickup"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Local Pickup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shipping_options_label" />
+
+    <CheckBox
+        android:id="@+id/enable_nearby"
+        android:layout_width="31dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:onClick="toggleNearbySearch"
+        app:layout_constraintStart_toEndOf="@+id/nearby_label"
+        app:layout_constraintTop_toBottomOf="@+id/local_pickup" />
+
+    <CheckBox
+        android:id="@+id/free_shipping"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="144dp"
+        android:text="Free Shipping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/local_pickup"
+        app:layout_constraintTop_toBottomOf="@+id/shipping_options_label" />
+
+    <TextView
+        android:id="@+id/kwd_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Keyword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/kwd_field"
+        android:layout_width="376dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Enter Keyword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kwd_label" />
+
+    <EditText
+        android:id="@+id/miles_from"
+        android:layout_width="376dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Miles from"
+        android:visibility="gone"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nearby_label" />
+
+    <TextView
+        android:id="@+id/category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kwd_error" />
+
+    <Spinner
+        android:id="@+id/category_select"
+        android:layout_width="376dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/categories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_label" />
+
+    <TextView
+        android:id="@+id/condition_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Condition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_select" />
+
+    <TextView
+        android:id="@+id/shipping_options_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Shipping Options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_btn" />
+
+    <TextView
+        android:id="@+id/nearby_label"
+        android:layout_width="145dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="12dp"
+        android:text="Enable Nearby Search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/local_pickup" />
+
+    <TextView
+        android:id="@+id/from_label"
+        android:layout_width="145dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:text="From"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/miles_from" />
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FC5830"
+        android:onClick="submitForm"
+        android:text="Search"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zip_error" />
+
+    <Button
+        android:id="@+id/clear_btn"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#FC5830"
+        android:onClick="clearForm"
+        android:text="Clear"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zip_error" />
+
+    <CheckBox
+        android:id="@+id/new_btn"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="New"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/condition_label" />
+
+    <CheckBox
+        android:id="@+id/used_btn"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Used"
+        app:layout_constraintStart_toEndOf="@+id/new_btn"
+        app:layout_constraintTop_toBottomOf="@+id/condition_label" />
+
+    <CheckBox
+        android:id="@+id/unspec_btn"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/used_btn"
+        app:layout_constraintTop_toBottomOf="@+id/condition_label" />
+
+    <TextView
+        android:id="@+id/kwd_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Please enter mandatory field"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kwd_field" />
+
+    <TextView
+        android:id="@+id/zip_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Please enter mandatory field"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zipField" />
+
+    <RadioGroup
+        android:id="@+id/zipcode_radio_group"
+        android:layout_width="32dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from_label">
+
+        <RadioButton
+            android:id="@+id/current_loc_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="disableZip"
+            android:layout_weight="1"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/zip_radio"
+            android:onClick="enableZip"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/current_loc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Current Location"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/zipcode_radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/from_label" />
+
+
+</android.support.constraint.ConstraintLayout>

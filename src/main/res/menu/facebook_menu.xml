@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/facebook_share"
+        android:icon="@drawable/facebook"
+        app:iconTint="@android:color/white"
+        app:showAsAction="ifRoom"
+        android:onClick="facebookShare"
+        android:title="Facebook">
+    </item>
+</menu>
